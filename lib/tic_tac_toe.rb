@@ -2,7 +2,7 @@
 # Maybe move the classes and stuff into
 # different files after you're done
 
-# Main game board
+# Tic Tac Toe game board
 class GameBoard
   def initialize
     @board_array = Array.new(9, ' ')
@@ -47,8 +47,35 @@ class GameBoard
   end
 end
 
+# Player class
+class Player
+  def initialize(symbol)
+    @symbol = symbol
+  end
+
+  def play_move
+    game_board.play_move(@symbol)
+  end
+end
+
+# Create game board
+game_board = GameBoard.new
+
+# Assign a symbol to each player randomly
+if rand(0..1) == 1
+  player_one = Player.new('X')
+  player_two = Player.new('O')
+else
+  player_one = Player.new('O')
+  player_two = Player.new('X')
+end
+
+game_on = true
+
+# while game_on
+
+p player_one
+p player_two
+
 game_board = GameBoard.new
 game_board.print_board
-game_board.play_move(3, 'O')
-game_board.play_move(5, 'O')
-game_board.play_move(7, 'O')
