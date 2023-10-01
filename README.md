@@ -1,1 +1,3 @@
-# odin-tic-tac-toe-ruby
+## Odin Tic-Tac-Toe
+
+First OOP project!
