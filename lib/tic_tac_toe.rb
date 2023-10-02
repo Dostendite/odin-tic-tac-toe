@@ -9,18 +9,21 @@ class GameBoard
   end
 
   def print_board
-    puts '~~~~~~~~~~~~'
+    puts
+    # puts '~~~~~~~~~~~~'
     print " #{@board_array[0]} | #{@board_array[1]} | #{@board_array[2]} \n"
     puts '------------'
     print " #{@board_array[3]} | #{@board_array[4]} | #{@board_array[5]} \n"
     puts '------------'
     print " #{@board_array[6]} | #{@board_array[7]} | #{@board_array[8]} \n"
-    puts '~~~~~~~~~~~~'
+    # puts '~~~~~~~~~~~~'
+    puts
   end
 
   def play_move(pos, symbol)
     raise 'SpaceNotEmptyError' unless space_empty?(pos - 1)
 
+    system "clear"
     @board_array[pos - 1] = symbol
     print_board
     check_winner(symbol)
@@ -43,18 +46,24 @@ class GameBoard
        (@board_array[6] == symbol && @board_array[4] == symbol && @board_array[2] == symbol)
 
       puts "Player #{symbol} is the winner!"
+      symbol
     end
   end
 end
 
 # Player class
 class Player
+  attr_reader :symbol
+
   def initialize(symbol)
     @symbol = symbol
   end
 
-  def play_move
-    game_board.play_move(@symbol)
+  def play_move(game_board)
+    print 'Pick move position (1-9): '
+    pos = gets.chomp.to_i - 1
+
+    game_board.play_move(pos, @symbol)
   end
 end
 
@@ -70,12 +79,21 @@ else
   player_two = Player.new('X')
 end
 
-game_on = true
-
-# while game_on
-
-p player_one
-p player_two
-
-game_board = GameBoard.new
+moves = 0
 game_board.print_board
+
+while moves < 9
+  if moves.even?
+    current_move = player_one.play_move(game_board)
+    if current_move == player_one.symbol
+      break
+    end
+  else
+    current_move = player_two.play_move(game_board)
+    if current_move == player_two.symbol
+      break
+    end
+  end
+
+  moves += 1
+end
