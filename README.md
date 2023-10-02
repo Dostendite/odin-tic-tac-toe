@@ -1,5 +1,5 @@
 ## Odin Tic-Tac-Toe
 
-First OOP project!
+👾 [**Live preview**](https://replit.com/@skimgus12/odin-tic-tac-toe)
 
-Game finished w/ error handling!
+First OOP project!
