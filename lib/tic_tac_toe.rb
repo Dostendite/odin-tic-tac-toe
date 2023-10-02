@@ -21,19 +21,17 @@ class GameBoard
   end
 
   def play_move(pos, symbol)
-    raise 'SpaceNotEmptyError' unless space_empty?(pos - 1)
-
-    system "clear"
+    system 'clear'
     @board_array[pos - 1] = symbol
     print_board
     check_winner(symbol)
   end
-
-  private
-
+  
   def space_empty?(pos)
     @board_array[pos] == ' '
   end
+
+  private
 
   def check_winner(symbol)
     if (@board_array[0] == symbol && @board_array[1] == symbol && @board_array[2] == symbol) ||
@@ -60,8 +58,22 @@ class Player
   end
 
   def play_move(game_board)
-    print 'Pick move position (1-9): '
-    pos = gets.chomp.to_i - 1
+    # We want the user to only be able
+    # to input a number between 1 and 9
+    # if they input a number outside of
+    # that range, ask again (infinitely)
+    print 'Pick move position [1-9]: '
+    pos = gets.chomp.to_i
+
+    if (1..9).include?(pos) && game_board.space_empty?(pos - 1)
+      game_board.play_move(pos, @symbol)
+    else
+      loop do
+        print 'Please pick a valid position [1-9]: '
+        pos = gets.chomp.to_i
+        break if (1..9).include?(pos) && game_board.space_empty?(pos - 1)
+      end
+    end
 
     game_board.play_move(pos, @symbol)
   end
