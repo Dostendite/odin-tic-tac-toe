@@ -1,12 +1,9 @@
 require_relative "lib/game_board"
 require_relative "lib/player"
 
-# Game logic
 
-# Create game board
 game_board = GameBoard.new
 
-# Assign a symbol to each player randomly
 if rand(0..1) == 1
   player_one = Player.new("X")
   player_two = Player.new("O")

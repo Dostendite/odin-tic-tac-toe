@@ -1,4 +1,3 @@
-# Tic Tac Toe game board
 class GameBoard
   def initialize
     @board_array = Array.new(9, " ")
@@ -6,13 +5,11 @@ class GameBoard
 
   def print_board
     puts
-    # puts "~~~~~~~~~~~~"
     print " #{@board_array[0]} | #{@board_array[1]} | #{@board_array[2]} \n"
     puts "------------"
     print " #{@board_array[3]} | #{@board_array[4]} | #{@board_array[5]} \n"
     puts "------------"
     print " #{@board_array[6]} | #{@board_array[7]} | #{@board_array[8]} \n"
-    # puts "~~~~~~~~~~~~"
     puts
   end
 
