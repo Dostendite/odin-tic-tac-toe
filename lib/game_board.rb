@@ -3,15 +3,16 @@ class GameBoard
     @board_array = Array.new(9, " ")
   end
 
-  def print_board
+  def to_s
     system "clear"
     puts
-    print " #{@board_array[0]} | #{@board_array[1]} | #{@board_array[2]} \n"
-    puts "------------"
-    print " #{@board_array[3]} | #{@board_array[4]} | #{@board_array[5]} \n"
-    puts "------------"
-    print " #{@board_array[6]} | #{@board_array[7]} | #{@board_array[8]} \n"
-    puts
+    ret_str = ""
+    ret_str << " #{@board_array[0]} | #{@board_array[1]} | #{@board_array[2]}\n"
+    ret_str << "------------\n"
+    ret_str << " #{@board_array[3]} | #{@board_array[4]} | #{@board_array[5]}\n"
+    ret_str << "------------\n"
+    ret_str << " #{@board_array[6]} | #{@board_array[7]} | #{@board_array[8]}\n"
+    ret_str << "\n"
   end
 
   def play_move(pos, symbol)
