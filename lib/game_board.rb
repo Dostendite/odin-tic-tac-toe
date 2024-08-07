@@ -25,6 +25,10 @@ class GameBoard
     @board_array[pos] == " "
   end
 
+  def announce_winner
+    puts "Player #{symbol} is the winner!"
+  end
+
   private
 
   def check_winner(symbol)
@@ -37,7 +41,7 @@ class GameBoard
        (@board_array[0] == symbol && @board_array[4] == symbol && @board_array[8] == symbol) ||
        (@board_array[6] == symbol && @board_array[4] == symbol && @board_array[2] == symbol)
 
-      puts "Player #{symbol} is the winner!"
+      announce_winner
       symbol
     end
   end

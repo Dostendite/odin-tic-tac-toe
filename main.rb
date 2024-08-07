@@ -13,7 +13,7 @@ else
 end
 
 moves = 0
-game_board.print_board
+puts game_board
 
 while moves < 10
 
