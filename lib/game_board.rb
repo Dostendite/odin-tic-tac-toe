@@ -4,6 +4,7 @@ class GameBoard
   end
 
   def print_board
+    system "clear"
     puts
     print " #{@board_array[0]} | #{@board_array[1]} | #{@board_array[2]} \n"
     puts "------------"
@@ -14,7 +15,6 @@ class GameBoard
   end
 
   def play_move(pos, symbol)
-    system "clear"
     @board_array[pos - 1] = symbol
     print_board
     check_winner(symbol)

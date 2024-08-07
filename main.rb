@@ -1,6 +1,6 @@
 require_relative "lib/game_board"
 require_relative "lib/player"
-
+require "colorize"
 
 game_board = GameBoard.new
 
