@@ -1,6 +1,6 @@
 ## Tic-Tac-Toe for TOP
 
-🔰 [**Live preview**](https://replit.com/@skimgus12/odin-tic-tac-toe#main.rb)
+🔰 [**Live preview**](https://replit.com/@skimgus12/odin-tic-tac-toe-ruby)
 
 First OOP project!
 
