@@ -1,6 +1,3 @@
-require "colorize"
-require "pry-byebug"
-
 # main game board class
 class GameBoard
   def initialize
