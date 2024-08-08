@@ -44,9 +44,12 @@ class GameBoard
     Player.new(symbol)
   end
 
+  # OPTIMIZE: the @moves condition is added for
+  # TDD purposes, find a way to remove it
   def play_game
-    until @winner
+    until @winner || @moves > 8
       puts self
+      @moves += 1
       play_turn
       check_for_winner
     end
@@ -61,10 +64,8 @@ class GameBoard
     if valid_space?(input)
       @board_array[input - 1] = @current_player.symbol
       @current_player = swap_players
-      @moves += 1
       return
     end
-
     play_turn
   end
 
@@ -86,16 +87,6 @@ class GameBoard
     @winner = @player_two if winner?(@player_two.symbol)
   end
 
-  def announce_game_end
-    if @winner == "tie"
-      puts "Game over, it's a tie!"
-    elsif @winner == @player_one
-      puts "Game over! Player one (#{@player_one.symbol}) wins!"
-    else
-      puts "Game over! Player two (#{@player_two.symbol}) wins!"
-    end
-  end
-
   def winner?(symbol)
     @winning_combinations.each do |combination|
       score = 0
@@ -105,5 +96,17 @@ class GameBoard
       return true if score == 3
     end
     false
+  end
+
+  private
+
+  def announce_game_end
+    if @winner == "tie"
+      puts "Game over, it's a tie!"
+    elsif @winner == @player_one
+      puts "Game over! Player one (#{@player_one.symbol}) wins!"
+    else
+      puts "Game over! Player two (#{@player_two.symbol}) wins!"
+    end
   end
 end
