@@ -1,4 +1,4 @@
-## Tic-Tac-Toe for TOP
+## Ruby Tic-Tac-Toe for TOP
 
 🔰 [**Live preview**](https://replit.com/@skimgus12/odin-tic-tac-toe-ruby)
 
@@ -8,9 +8,8 @@ First OOP project!
 
 **The project has been revisited!**
 
-I have added many improvements, such as:
-* Cleaned up the mess, now it's *all* OOP!
-* Complete code rework of the game_board & player classes!
+I've added many improvements, such as:
+* Complete code refactor & cleanup! Now it's *all* OOP!
 * RSpec testing capabilities
 
 All that's left is to add the unit tests.
