@@ -1,3 +1,5 @@
+require "pry-byebug"
+
 # main game board class
 class GameBoard
   def initialize
@@ -88,15 +90,12 @@ class GameBoard
 
   def check_for_winner
     if @moves > 8
-      return "tie"
+      "tie"
     elsif winner?(@player_one.symbol)
-      return @player_one
+      @player_one
     elsif winner?(@player_two.symbol)
-      return @player_two
+      @player_two
     end
-
-    # might want to remove this nil
-    nil
   end
 
   def set_winner
@@ -104,14 +103,11 @@ class GameBoard
   end
 
   def winner?(symbol)
-    @winning_combinations.each do |combination|
-      score = 0
-      combination.each do |index|
-        score += 1 if @board_array[index] == symbol
+    @winning_combinations.any? do |combination|
+      combination.all? do |index|
+        @board_array[index] == symbol
       end
-      return true if score == 3
     end
-    false
   end
 
   private
