@@ -62,11 +62,15 @@ class GameBoard
     input = gets.chomp.to_i
 
     if valid_space?(input)
-      @board_array[input - 1] = @current_player.symbol
+      draw_symbol(input, @current_player.symbol)
       @current_player = swap_players
       return
     end
     play_turn
+  end
+
+  def draw_symbol(index, symbol)
+    @board_array[index - 1] = symbol
   end
 
   def swap_players
