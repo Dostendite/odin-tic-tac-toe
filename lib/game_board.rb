@@ -51,7 +51,7 @@ class GameBoard
       puts self
       @moves += 1
       play_turn
-      check_for_winner
+      set_winner
     end
     puts self
     announce_game_end
@@ -66,6 +66,7 @@ class GameBoard
       @current_player = swap_players
       return
     end
+
     play_turn
   end
 
@@ -86,9 +87,20 @@ class GameBoard
   end
 
   def check_for_winner
-    @winner = "tie" if @moves > 8
-    @winner = @player_one if winner?(@player_one.symbol)
-    @winner = @player_two if winner?(@player_two.symbol)
+    if @moves > 8
+      return "tie"
+    elsif winner?(@player_one.symbol)
+      return @player_one
+    elsif winner?(@player_two.symbol)
+      return @player_two
+    end
+
+    # might want to remove this nil
+    nil
+  end
+
+  def set_winner
+    @winner = check_for_winner
   end
 
   def winner?(symbol)
